@@ -14,9 +14,6 @@ def preprocess(term : str) -> str:
         term = preprocess(term)
     return term
 
-
-
-
 def analyze_term(term):
     term = preprocess(term)
     n = Node.Node()
@@ -29,7 +26,7 @@ def analyze_term(term):
         n.op = "*"
         n.args = list(map(lambda t: analyze_term(t),mult_args))
     else:
-        n.args = list(map(lambda t: float(t),add_args))
+        n.args = add_args
     return n
 
 def analyze_add(l):
