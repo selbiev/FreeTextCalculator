@@ -80,6 +80,8 @@ def analyze_add(l):
         args.append(preprocess(arg_until_now))
     return args
 
+# This method is almost the same as analyze_add but i didn't do
+# one generic method for the sake of the readability
 def analyze_mult(l):
     l = str(l)
     args = []
