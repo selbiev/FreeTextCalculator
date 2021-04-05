@@ -1,5 +1,5 @@
 import Node
-# This is the core of the graphical calculator
+
 def preprocess(term : str) -> str:
     if term[len(term)-1] == " ":        #check for trailing whitespace
         term = term[:len(term)-1]       #delete trainling whitespace
