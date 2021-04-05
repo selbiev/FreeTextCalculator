@@ -1,6 +1,6 @@
 # GraphicalCalculator
 
-This project was created in order to build a powerful calculator with the possibility to put functions in and be able to see its graphical representation.
+This project was created in order to build a powerful calculator with the possibility to work with variables, functions and their graphical representations.
 
 The core of this program is the Analyzer. It's capable to analyze a complex input term (respecting the operations orders) and evaluate it's result. 
 
