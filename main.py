@@ -15,4 +15,5 @@ if __name__ == '__main__':
     #print(Calculator.input_cmd("eval " + term0))
 
     print(Calculator.input_cmd("let x = 3 + 5"))
-    print(Calculator.input_cmd("eval x + 2"))
+    print(Calculator.input_cmd("let y = 3 * 5 + 3"))
+    print(Calculator.input_cmd("eval x + 2 + y * (2 + 1)"))
