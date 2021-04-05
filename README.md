@@ -1,4 +1,4 @@
-# GraphicalCalculator
+# Graphical Calculator
 
 This project was created in order to build a powerful calculator with the possibility to input plain text expressions by users and which can handle variables, functions and also display their graphical representations.
 
