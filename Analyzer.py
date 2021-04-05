@@ -1,5 +1,7 @@
 import Node
 
+mapping = dict()        #the state of the program, e.g. for variable bindings or saved functions
+
 def preprocess(term : str) -> str:
     if term[len(term)-1] == " ":        #check for trailing whitespace
         term = term[:len(term)-1]       #delete trainling whitespace
@@ -13,27 +15,7 @@ def preprocess(term : str) -> str:
     return term
 
 
-def add(arg_list):
-    sum_so_far = 0.0
-    for i in range(len(arg_list)):
-        sum_so_far += arg_list[i]
-    return sum_so_far
 
-def mult(arg_list):
-    prod_so_far = 1.0
-    for i in range(len(arg_list)):
-        prod_so_far *= arg_list[i]
-    return prod_so_far
-
-def evaluate(n):
-    result = 0.0
-    if n.op == '+':
-        result = add(list(map(lambda t: evaluate(t),n.args)))
-    elif n.op == '*':
-        result = mult(list(map(lambda t: evaluate(t),n.args)))
-    else:
-        return float(n.args[0])
-    return result
 
 def analyze_term(term):
     term = preprocess(term)

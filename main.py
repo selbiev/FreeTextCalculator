@@ -1,4 +1,5 @@
 import Analyzer
+import Evaluator
 
 
 # Press the green button in the gutter to run the script.
@@ -9,6 +10,6 @@ if __name__ == '__main__':
     term2 = "3 * (3 + 1) * 2"
     term3 = "2 * 3 + 3 * 3"
     node = Analyzer.analyze_term(term0)
-    print(Analyzer.evaluate(node))
+    print(Evaluator.eval_term(node))
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
