@@ -11,9 +11,29 @@ def preprocess(term : str) -> str:
     if term[0] == " ":                  #check for starting whitespace
         term = term[1:]                 #etc.
         term = preprocess(term)
-    if term[0] == '(' and term[len(term)-1] == ')':     #check for brackets
-        term = term[1:len(term)-1]
-        term = preprocess(term)
+    if term[0] == '(' and term[len(term)-1] == ')':     #check for unnecessary brackets, e.g. ((1 + 2))
+        counted_zero = False
+        num_opening_brackets = 0
+        num_closing_brackets = 0
+        for i in range(len(term)):
+            if term[i] == "(":
+                num_opening_brackets += 1
+            elif term[i] == ")":
+                num_closing_brackets += 1
+            if (i > 0) and (i < (len(term)-1)) and (num_closing_brackets == num_opening_brackets):
+                counted_zero = True
+        if not counted_zero:
+            term = term[1:len(term) - 1]
+            term = preprocess(term)
+    return term
+
+def remove_whitespaces(term):
+    if term[len(term)-1] == " ":        #check for trailing whitespace
+        term = term[:len(term)-1]       #delete trailing whitespace
+        term = remove_whitespaces(term)         #recursively continue
+    if term[0] == " ":                  #check for starting whitespace
+        term = term[1:]                 #etc.
+        term = remove_whitespaces(term)
     return term
 
 def analyze_term(term):
@@ -21,13 +41,20 @@ def analyze_term(term):
     term = preprocess(term)
 
     if term[0] == "-":      # was the term negated?
-        term = term[1:]
+        if term[1] == "(" and term[len(term) - 1] == ")":
+            term = term[2:len(term) - 1]
+        else:
+            term = term[1:]
         n.neg = True
     elif term[0] == ":":    # was there a division?
-        term = term[1:]
+        if term[1] == "(" and term[len(term)-1] == ")":
+            term = term[2:len(term)-1]
+        else:
+            term = term[1:]
+
         n.inv = True
 
-    term = preprocess(term)
+    #term = preprocess(term)
     add_args = analyze_add(term)
     mult_args = analyze_mult(term)
 
