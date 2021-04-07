@@ -19,22 +19,48 @@ def mult(arg_list):
 # evaluates a term
 def eval_term(n, state):
     result = 0.0
+    if n.op == '+' or n.op == '*':
+        for i in range(len(n.args)):
+            n.args[i] = eval_term(n.args[i], state)
+
     if n.op == '+':
-        result_list = list(map(lambda t: eval_term(t, state),n.args))
-        result = add(result_list)
+        result = add(n.args)
+        if n.neg:
+            result = result * (-1.0)
+        if n.inv and (float(result)!=0.0):
+            result = 1.0 / result
+        if n.inv and (float(result)==0.0):
+            raise ZeroDivisionError
+        return result
     elif n.op == '*':
-        result_list = list(map(lambda t: eval_term(t, state), n.args))
-        result = mult(result_list)
+        result = mult(n.args)
+        if n.neg:
+            result = result * (-1.0)
+        if n.inv and (float(result) != 0.0):
+            result = 1.0 / result
+        if n.inv and (float(result) == 0.0):
+            raise ZeroDivisionError
+        return result
     else:
         return eval_leaf(n, state)
-    return result
 
 # evaluates a leaf, i.e. variable, function etc.
 def eval_leaf(n, state):
     leaf = n.args[0]
     if leaf.isnumeric():
-        return float(leaf)
+        result = float(leaf)
+        if n.neg:
+            result = result * (-1.0)
+        if n.inv and (result != 0):
+            result = 1.0 / result
+        if n.inv and (result == 0):
+            raise ZeroDivisionError
+        return result
     elif type(leaf) == str and (leaf in state.keys()):
         result_node = state[leaf]
+        if n.neg:
+            result_node.neg = True
+        if n.inv:
+            result_node.inv = True
         return eval_term(result_node,state)
     return 0.0
