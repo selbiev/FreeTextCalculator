@@ -10,14 +10,18 @@ if __name__ == '__main__':
     term1 = "(2 + (3 * 12))"
     term2 = "3 * (3 + 1) * 2"
     term3 = "2 * 3 + 3 * 3"
+    term4 = "((1 * 8 + 2) : 3) * (3 + (3 - (1 + 2))) + (1 + 2)"
+    term5 = "(9 : (2 - (3 + 6)))"
+    term6 = "1 : (2 : (3 + 6))"
     #node = Analyzer.analyze_term(term0)
     #print(Evaluator.eval_term(node))
     #print(Calculator.input_cmd("eval " + term0))
 
-    #print(Calculator.input_cmd("let x = 3 + 5"))
-    #print(Calculator.input_cmd("let y = 3 * 5 + 3"))
-    #print(Calculator.input_cmd("let y = 3 * 5"))
-    #print(Calculator.input_cmd("eval x + 2 + y * (2 + 1)"))
+    """print(Calculator.input_cmd("let x = 3 - 5"))
+    print(Calculator.input_cmd("let y = 3 : 5 + 3"))
+    print(Calculator.input_cmd("let y = 3 * 5"))
+    print(Calculator.input_cmd("eval x + 2 + y * (2 + 1)"))
     # problematischer term 1 : (2 : (3 + 6))
-    n = Analyzer.analyze_term("1 : (2 - (3 + 6))")
-    print("hello")
+    #n = Analyzer.analyze_term("((1 * 9) : (2 - (3 + 6))) : 1")
+    #print(Analyzer.preprocess('((1 * 9) : (2 - (3 + 6)))'))"""
+    print(Calculator.input_cmd("eval 1 : (2 : (3 + 6))"))
