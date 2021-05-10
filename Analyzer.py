@@ -1,6 +1,6 @@
 import Node
 
-mapping = dict()        #the state of the program, e.g. for variable bindings or saved functions
+mapping = dict()        #the state of the program, e.g. for variable bindings or saved  functions
 
 def preprocess(term : str) -> str:
     if len(term) == 0:

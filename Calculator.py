@@ -2,7 +2,7 @@ import Analyzer
 import Node
 import Evaluator
 
-# this dictionary maps variable or function names to nodes
+# this dictionary maps variable or function names to nodes 
 state = dict()
 
 # this method takes an input and checks of which type the input is.
