@@ -10,4 +10,4 @@ Analyzer: Can analyze a complex input term (respecting the operations orders) an
 
 Evaluator: Evaluates an AST and returns a float value. It also makes use of the state object of the program (a dictionary, mapping variables and functions to expressions) in order to be able to evaluate expressions which contain variables.
 
-The first version only works with numbers and variables, but for the next versions it is planned to also be able to save functions, their graphical representations and also other more advanced features like Derivatives, Integrals, Taylor approximations etc.
+The first version only works with numbers and variables, but for the next versions it is planned to also be able to save functions, their graphical representations and also other more advanced features like Derivatives, Integrals, Taylor approximations etc. 
