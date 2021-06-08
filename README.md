@@ -1,7 +1,7 @@
 # Graphical Calculator
 
 This project was created in order to build a powerful calculator with the possibility to input plain text expressions by users and which can handle variables, functions and also display their graphical representations.
-
+ 
 The core of this program are the Analyzer, Evaluator and the Calculator modules.
 
 Calculator: First point of contact. Takes a command (string) and decides what is to do with it.
