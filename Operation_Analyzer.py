@@ -35,8 +35,33 @@ def analyze(operation_, term_):
     return analyze_operation()
 
 
+def analyze_operation():
+    global current_ptr, following_term_is_inverse
+
+    current_ptr = 0
+    following_term_is_inverse = False
+    while current_ptr < (len(term)):
+        if opening_bracket_next():
+            do_open_bracket()
+        elif closing_bracket_next():
+            do_close_bracket()
+        elif inverse_operation_char_next() and no_unclosed_brackets():
+            add_subterm_and_set_next_term_as_inverse()
+        elif operation_char_next() and no_unclosed_brackets():
+            add_subterm_normal_case()
+        else:
+            add_current_char_to_subterm()
+        current_ptr += 1
+    if current_subterm_not_empty():
+        add_subterm_normal_case()
+    return subterms
+
+
+# following methods are helper methods and contain lower level details
+
+
 def do_open_bracket():
-    global num_open_brackets, current_subterm, current_ptr
+    global num_open_brackets, current_subterm
     num_open_brackets += 1
     current_subterm += term[current_ptr]
 
@@ -93,25 +118,3 @@ def add_current_char_to_subterm():
 
 def current_subterm_not_empty():
     return len(current_subterm) > 0
-
-
-def analyze_operation():
-    global current_ptr, current_subterm, following_term_is_inverse
-
-    current_ptr = 0
-    following_term_is_inverse = False
-    while current_ptr < (len(term)):
-        if opening_bracket_next():
-            do_open_bracket()
-        elif closing_bracket_next():
-            do_close_bracket()
-        elif inverse_operation_char_next() and no_unclosed_brackets():
-            add_subterm_and_set_next_term_as_inverse()
-        elif operation_char_next() and no_unclosed_brackets():
-            add_subterm_normal_case()
-        else:
-            add_current_char_to_subterm()
-        current_ptr += 1
-    if current_subterm_not_empty():
-        add_subterm_normal_case()
-    return subterms
