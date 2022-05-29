@@ -1,12 +1,13 @@
 import Analyzer
 import Evaluator
 import Calculator
+import StringUtils as su
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # successfullly tested terms, against results from wolfram alpha (: must be replaced by / for wolfram alpha)
-    term = "12 + 3 * 3 + (2 + (3 * 12 + 1) * 3) * 2 + 1"
+    termX = "12 + 3 * 3 + (2 + (3 * 12 + 1) * 3) * 2 + 1"
     term0 = "12 + (3 * (2 + (3 * 3 + 2))) * 3 + (2 + (3 * 12 + 1) * 3) * (2 * 3 * 1 + 1 + 2 * 3 + (9 * 9 + 22)) * 7 + 1"
     term1 = "2 * 3 + (2 * (9 : 22)) * (7 + 99) - 12 : (3 * (2 + (3 * 3 - 2))) : 3 + (2 - 2 : 3) * (3 : (1 - 2)) + 1"
     term2 = "3 * (3 + 1) : 2"
@@ -20,3 +21,9 @@ if __name__ == '__main__':
     print(Calculator.input_cmd("eval " + term1))
     print(Calculator.input_cmd("let x = (1 + (3 * 2)) : (7 - 1)"))
     print(Calculator.input_cmd("eval x : 9"))
+
+termXresult = 248
+
+strprep = su.trim_brackets("((x + 2)")
+
+print(strprep)
