@@ -113,7 +113,5 @@ def analyze_operation():
             add_current_char_to_subterm()
         current_ptr += 1
     if current_subterm_not_empty():
-        if following_term_is_inverse:
-            current_subterm = inverse_operation + "(" + str_utils.trim_brackets(current_subterm) + ")"
-        subterms.append(str_utils.trim_brackets(current_subterm))
+        add_subterm_normal_case()
     return subterms
