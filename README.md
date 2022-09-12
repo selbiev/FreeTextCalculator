@@ -1,12 +1,12 @@
-# Graphical Calculator
+# Free Text Calculator
 
-This project was created in order to build a powerful calculator with the possibility to input plain text expressions by users and which can handle variables, functions and also display their graphical representations.
+This project was created in order to build a powerful calculator with the possibility to input plain text expressions by users and which can handle variables, functions and also display their graphical representations (as a further step).
  
 The core of this program are the Analyzer, Evaluator and the Calculator modules.
 
 Calculator: First point of contact. Takes a command (string) and decides what is to do with it.
 
-Analyzer: Can analyze a complex input term (respecting the operations orders) and return an abstract syntax tree (with a Node object as its root).
+Analyzer: Can analyze a complex input term (respecting the operations orders) and return an abstract syntax tree (AST) with a Node object as its root.
 
 Evaluator: Evaluates an AST and returns a float value. It also makes use of the state object of the program (a dictionary, mapping variables and functions to expressions) in order to be able to evaluate expressions which contain variables.
 
